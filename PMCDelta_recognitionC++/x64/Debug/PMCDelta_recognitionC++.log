@@ -1,0 +1,32 @@
+﻿Build started 2015/6/24 上午 01:25:50.
+     1>Project "C:\Users\Fred\Dropbox\PMC Delta\PMCDelta_recognitionC++\PMCDelta_recognitionC++\PMCDelta_recognitionC++.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /IC:\opencv\build\x64\vc12\..\..\include /Zi /nologo /W3 /WX- /sdl /Od /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TP /errorReport:prompt CenterOrientation.cpp main.cpp
+         main.cpp
+     1>C:\opencv\build\include\opencv2/core/mat.hpp(1413): warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
+         CenterOrientation.cpp
+     1>C:\opencv\build\include\opencv2/core/mat.hpp(1413): warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
+     1>CenterOrientation.cpp(51): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>CenterOrientation.cpp(60): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>CenterOrientation.cpp(76): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>CenterOrientation.cpp(77): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>CenterOrientation.cpp(90): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>CenterOrientation.cpp(95): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>CenterOrientation.cpp(96): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>CenterOrientation.cpp(98): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>CenterOrientation.cpp(101): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>CenterOrientation.cpp(103): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>CenterOrientation.cpp(109): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+         Generating Code...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Fred\Dropbox\PMC Delta\PMCDelta_recognitionC++\x64\Debug\PMCDelta_recognitionC++.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\opencv\build\x64\vc12\lib opencv_ts300d.lib opencv_world300d.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Fred\Dropbox\PMC Delta\PMCDelta_recognitionC++\x64\Debug\PMCDelta_recognitionC++.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Fred\Dropbox\PMC Delta\PMCDelta_recognitionC++\x64\Debug\PMCDelta_recognitionC++.lib" /MACHINE:X64 x64\Debug\Binarization.obj
+         x64\Debug\CenterOrientation.obj
+         x64\Debug\main.obj
+         x64\Debug\Segmentation.obj
+         x64\Debug\Utility.obj
+         PMCDelta_recognitionC++.vcxproj -> C:\Users\Fred\Dropbox\PMC Delta\PMCDelta_recognitionC++\x64\Debug\PMCDelta_recognitionC++.exe
+     1>Done Building Project "C:\Users\Fred\Dropbox\PMC Delta\PMCDelta_recognitionC++\PMCDelta_recognitionC++\PMCDelta_recognitionC++.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:03.53

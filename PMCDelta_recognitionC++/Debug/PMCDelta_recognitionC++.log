@@ -1,0 +1,43 @@
+﻿Build started 2015/6/18 下午 04:51:49.
+     1>Project "C:\Users\Fred\Dropbox\PMC Delta\PMCDelta_recognitionC++\PMCDelta_recognitionC++\PMCDelta_recognitionC++.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\opencv\build\x64\vc12\..\..\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Binarization.cpp CenterOrientation.cpp main.cpp Segmentation.cpp Utility.cpp
+         Utility.cpp
+     1>c:\opencv\build\include\opencv2\core\mat.hpp(1413): warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
+         Segmentation.cpp
+     1>c:\opencv\build\include\opencv2\core\mat.hpp(1413): warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
+     1>c:\users\fred\dropbox\pmc delta\pmcdelta_recognitionc++\pmcdelta_recognitionc++\segmentation.cpp(14): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\fred\dropbox\pmc delta\pmcdelta_recognitionc++\pmcdelta_recognitionc++\segmentation.cpp(17): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\fred\dropbox\pmc delta\pmcdelta_recognitionc++\pmcdelta_recognitionc++\segmentation.cpp(32): warning C4018: '<' : signed/unsigned mismatch
+         main.cpp
+     1>c:\opencv\build\include\opencv2\core\mat.hpp(1413): warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
+     1>c:\users\fred\dropbox\pmc delta\pmcdelta_recognitionc++\pmcdelta_recognitionc++\main.cpp(46): warning C4018: '<' : signed/unsigned mismatch
+         CenterOrientation.cpp
+     1>c:\opencv\build\include\opencv2\core\mat.hpp(1413): warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
+     1>c:\users\fred\dropbox\pmc delta\pmcdelta_recognitionc++\pmcdelta_recognitionc++\centerorientation.cpp(15): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\fred\dropbox\pmc delta\pmcdelta_recognitionc++\pmcdelta_recognitionc++\centerorientation.cpp(60): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\fred\dropbox\pmc delta\pmcdelta_recognitionc++\pmcdelta_recognitionc++\centerorientation.cpp(76): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\fred\dropbox\pmc delta\pmcdelta_recognitionc++\pmcdelta_recognitionc++\centerorientation.cpp(77): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\fred\dropbox\pmc delta\pmcdelta_recognitionc++\pmcdelta_recognitionc++\centerorientation.cpp(89): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\fred\dropbox\pmc delta\pmcdelta_recognitionc++\pmcdelta_recognitionc++\centerorientation.cpp(90): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\fred\dropbox\pmc delta\pmcdelta_recognitionc++\pmcdelta_recognitionc++\centerorientation.cpp(95): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\fred\dropbox\pmc delta\pmcdelta_recognitionc++\pmcdelta_recognitionc++\centerorientation.cpp(96): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\fred\dropbox\pmc delta\pmcdelta_recognitionc++\pmcdelta_recognitionc++\centerorientation.cpp(98): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\fred\dropbox\pmc delta\pmcdelta_recognitionc++\pmcdelta_recognitionc++\centerorientation.cpp(101): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\fred\dropbox\pmc delta\pmcdelta_recognitionc++\pmcdelta_recognitionc++\centerorientation.cpp(103): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\fred\dropbox\pmc delta\pmcdelta_recognitionc++\pmcdelta_recognitionc++\centerorientation.cpp(109): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+         Binarization.cpp
+     1>c:\opencv\build\include\opencv2\core\mat.hpp(1413): warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
+         Generating Code...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Fred\Dropbox\PMC Delta\PMCDelta_recognitionC++\PMCDelta_recognitionC++\Debug\PMCDelta_recognitionC++.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\opencv\build\x64\vc12\lib opencv_ts300d.lib opencv_world300d.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Fred\Dropbox\PMC Delta\PMCDelta_recognitionC++\PMCDelta_recognitionC++\Debug\PMCDelta_recognitionC++.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Fred\Dropbox\PMC Delta\PMCDelta_recognitionC++\PMCDelta_recognitionC++\Debug\PMCDelta_recognitionC++.lib" /MACHINE:X86 Debug\Binarization.obj
+         Debug\CenterOrientation.obj
+         Debug\main.obj
+         Debug\Segmentation.obj
+         Debug\Utility.obj
+     1>opencv_world300d.lib(opencv_world300d.dll) : fatal error LNK1112: module machine type 'x64' conflicts with target machine type 'X86'
+     1>Done Building Project "C:\Users\Fred\Dropbox\PMC Delta\PMCDelta_recognitionC++\PMCDelta_recognitionC++\PMCDelta_recognitionC++.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:10.43

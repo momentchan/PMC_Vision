@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="PMCDelta_recognitionC++">
+</Property><Property Name="方案檔" Value="C:\Users\Delta\Dropbox\PMC Delta\PMCDelta_recognitionC++\PMCDelta_recognitionC++.sln">
+</Property><Property Name="使用者選項檔" Value="C:\Users\Delta\Dropbox\PMC Delta\PMCDelta_recognitionC++\PMCDelta_recognitionC++.suo">
+</Property><Property Name="Date" Value="2015年6月18日">
+</Property><Property Name="Time" Value="下午 16:48">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="PMCDelta_recognitionC++.sln" Description="檔案已成功備份為 C:\Users\Delta\Dropbox\PMC Delta\PMCDelta_recognitionC++\PMCDelta_recognitionC++.sln.old">
+</Event><Event ErrorLevel="0" Project="" Source="PMCDelta_recognitionC++.suo" Description="檔案已成功備份為 C:\Users\Delta\Dropbox\PMC Delta\PMCDelta_recognitionC++\PMCDelta_recognitionC++.suo.old">
+</Event><Event ErrorLevel="3" Project="PMCDelta_recognitionC++" Source="PMCDelta_recognitionC++\PMCDelta_recognitionC++.vcxproj" Description="不需要轉換">
+</Event><Event ErrorLevel="0" Project="" Source="PMCDelta_recognitionC++.sln" Description="方案轉換成功">
+</Event><Event ErrorLevel="3" Project="" Source="PMCDelta_recognitionC++.sln" Description="Converted">
+</Event></UpgradeLog>
