@@ -1,4 +1,4 @@
-#include "FuncDeclaration.h"
+ï»¿#include "FuncDeclaration.h"
 
 extern bool binaryShow;
 extern bool refineShow;
@@ -11,29 +11,93 @@ int morph_size = 3;
 int const max_morph_size = 10;
 int const open_operator = 2;
 int const close_operator = 3;
+int meanH, meanS, meanV;
 
+void findRange(Mat image, int meanH, int meanS, int meanV, int *rangeH, int *rangeS, int *rangeV){
+
+	int max_dist = 0;
+	int min_dist = 10000;
+
+	int maxdistH = 0;
+	int maxdistS = 0;
+	int maxdistV = 0;
+
+	for (int y = 0; y<image.rows; y++)
+	for (int x = 0; x<image.rows; x++){
+		int distH = abs((int)image.at<Vec3b>(y, x).val[0] - meanH);
+		int distS = abs((int)image.at<Vec3b>(y, x).val[1] - meanS);
+		int distV = abs((int)image.at<Vec3b>(y, x).val[2] - meanV);
+
+		maxdistH = (maxdistH>distH) ? maxdistH : distH;
+		maxdistS = (maxdistS>distS) ? maxdistS : distS;
+		maxdistV = (maxdistV>distV) ? maxdistV : distV;
+	}
+	for (int y = 0; y<image.rows; y++)
+	for (int x = 0; x<image.rows; x++){
+		int distH = abs((int)image.at<Vec3b>(y, x).val[0] - meanH);
+		int distS = abs((int)image.at<Vec3b>(y, x).val[1] - meanS);
+		int distV = abs((int)image.at<Vec3b>(y, x).val[2] - meanV);
+
+		if (distH<15 && distS<50){
+			if ((int)image.at<Vec3b>(y, x).val[0]<rangeH[0])
+				rangeH[0] = (int)image.at<Vec3b>(y, x).val[0];
+			if ((int)image.at<Vec3b>(y, x).val[0]>rangeH[1])
+				rangeH[1] = (int)image.at<Vec3b>(y, x).val[0];
+
+			if ((int)image.at<Vec3b>(y, x).val[1]<rangeS[0])
+				rangeS[0] = (int)image.at<Vec3b>(y, x).val[1];
+			if ((int)image.at<Vec3b>(y, x).val[1]>rangeS[1])
+				rangeS[1] = (int)image.at<Vec3b>(y, x).val[1];
+
+			if ((int)image.at<Vec3b>(y, x).val[2]<rangeV[0])
+				rangeV[0] = (int)image.at<Vec3b>(y, x).val[2];
+			if ((int)image.at<Vec3b>(y, x).val[2]>rangeV[1])
+				rangeV[1] = (int)image.at<Vec3b>(y, x).val[2];
+		}
+	}
+	//		cout<<maxdistH<<endl;
+	//	cout<<maxdistS<<endl;
+	//cout<<maxdistV<<endl;
+}
 
 void BackgroundRemove()
-{
+{	
+	Mat hsv; //Ã‚Ã Â¨Ã¬hsvÂ¥Â­Â­Â±
+	Mat dst; //ÂµÂ²ÂªGÂ¹ÃÂ¤Ã¹
+	Mat colorMask; //Â¦UÃƒCÂ¦Ã¢ÂªÂºÂ»Ã–Â­Ãˆ
 
-	Mat hsv; //Âà¨ìhsv¥­­±
-	Mat dst; //µ²ªG¹Ï¤ù
-	Mat colorMask; //¦UÃC¦âªº»Ö­È
+	//Mat mask = Mat::zeros(img.rows, img.cols, CV_8U); //Â¬Â°Â¤FÃ‚oÂ±Â¼Â¨Ã¤Â¥LÃƒCÂ¦Ã¢
+	cvtColor(img, hsv, CV_BGR2HSV);//Ã‚Ã Â¦Â¨hsvÂ¥Â­Â­Â±
 
-	//Mat mask = Mat::zeros(img.rows, img.cols, CV_8U); //¬°¤FÂo±¼¨ä¥LÃC¦â
-	cvtColor(img, hsv, CV_BGR2HSV);//Âà¦¨hsv¥­­±
-	
-	inRange(hsv, Scalar(50, 50, 60), Scalar(90, 255, 255), colorMask);
-	img.copyTo(dst, colorMask); //±N­ì¹Ï¤ù¸g¥Ñ¾B¸n¹LÂo«á¡A±o¨ìµ²ªGdst
-	binary = colorMask;
+	HistogramCalulation(hsv, meanH, meanS, meanV);
+
+	//cout<<"Major Color: "<<meanH<<" "<<meanS<<" "<<meanV<<endl;
+
+	int rangeH[2]; rangeH[0] = 180; rangeH[1] = 0;
+	int rangeS[2]; rangeS[0] = 255; rangeS[1] = 0;
+	int rangeV[2]; rangeV[0] = 255; rangeV[1] = 0;
+	findRange(hsv, meanH, meanS, meanV, rangeH, rangeS, rangeV);
+
+	//cout<<"Color Range: "<<endl;
+	//cout<<rangeH[0]<<" "<<rangeH[1]<<endl;
+	//cout<<rangeS[0]<<" "<<rangeS[1]<<endl;
+	//cout<<rangeV[0]<<" "<<rangeV[1]<<endl;
+
+
+	//inRange(hsv, Scalar(rangeH[0], rangeS[0], rangeV[0]), Scalar(rangeH[1]+5, 255, rangeV[1]+5), colorMask);
+	inRange(hsv, Scalar(0, 0, 0), Scalar(255, 120, 50), colorMask);
+
+	img.copyTo(dst, colorMask);
+	binary = ~colorMask;
 	if (binaryShow){
-		imshow("mask", colorMask);//show mask
-		imshow("img", img);//show­ì¹Ï¤ù
-		imshow("result", dst);//showµ²ªG
 		ColorDisplay();
+		imshow("mask", binary);//show mask
+		//imshow("img", img);//showÂ­Ã¬Â¹ÃÂ¤Ã¹
+		imshow("result", dst);//showÂµÂ²ÂªG
 		waitKey();
 		destroyAllWindows();
 	}
+
 }
 
 void Binarization(){

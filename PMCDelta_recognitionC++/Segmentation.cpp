@@ -4,6 +4,7 @@ vector < vector<Point2i > > blobs;
 Mat label_image;
 extern Mat img;
 extern Mat refine;
+int minSize = 1000;
 extern bool separateShow;
 extern vector <Mat> separatedObjectsBlack;
 extern vector <Mat> separatedObjectsColor;
@@ -14,13 +15,17 @@ void ObjectSegment(){
 	for (int i = 0; i < blobs.size(); i++) {
 		Mat object = Mat::zeros(refine.size(), 16);
 		int label = label_image.at<int>(blobs[i][0].y, blobs[i][0].x);
-		for (int j = 0; j < blobs[i].size(); j++) {
-			int x = blobs[i][j].x;
-			int y = blobs[i][j].y;
-			object.at<Vec3b>(y, x) = Vec3b(255, 255, 255);
+		if (blobs[i].size()>minSize){
+			//cout << blobs[i].size() << endl;
+			for (int j = 0; j < blobs[i].size(); j++) {
+				int x = blobs[i][j].x;
+				int y = blobs[i][j].y;
+				object.at<Vec3b>(y, x) = Vec3b(255, 255, 255);
+			}
+			object = HoleFilling(object);
+			separatedObjectsBlack.push_back(object);
 		}
-		object = HoleFilling(object);
-		separatedObjectsBlack.push_back(object);
+		
 
 		//if (separateShow){
 		//	imshow("Separated Objects", separatedObjectsBlack[i]);

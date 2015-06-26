@@ -158,6 +158,7 @@
     <ClCompile Include="Binarization.cpp" />
     <ClCompile Include="CenterOrientation.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Recognition.cpp" />
     <ClCompile Include="Segmentation.cpp" />
     <ClCompile Include="Utility.cpp" />
   </ItemGroup>

@@ -2,9 +2,10 @@
 
 extern vector <Mat> separatedObjectsBlack;
 extern vector <Mat> separatedObjectsColor;
+extern vector <Mat> rotatedObjects;
 extern vector <Point2f> objectCenters;
 extern vector <double> objectOrientations;
-int windowSize = 200;
+int windowSize = 300;
 
 extern bool drawOrientation;
 extern bool orientationShow;
@@ -12,6 +13,7 @@ extern bool showRotate;
 
 void CenterOrientation(){
 	cout << "Computing center and orientation..." << endl << endl;
+	cout << separatedObjectsBlack.size();
 	for (int i = 0; i < separatedObjectsBlack.size(); i++){
 		Mat gray;
 		cvtColor(separatedObjectsBlack[i], gray, COLOR_BGR2GRAY);
@@ -104,6 +106,8 @@ void RotateObject()
 			}
 		}
 
+
+
 		int len = max(src.cols, src.rows);
 		//Point2f center(len / 2., len / 2.);
 		Point2f center = Point2f(windowSize / 2, windowSize / 2);
@@ -111,8 +115,8 @@ void RotateObject()
 		Mat rot = getRotationMatrix2D(center, angle, 1.0);
 
 		Mat dst;
-
 		warpAffine(src, dst, rot, Size(len, len), INTER_CUBIC, BORDER_CONSTANT, Scalar(255, 255, 255));
+		rotatedObjects.push_back(dst);
 		if (showRotate){
 			imshow("rotateObject", src);
 			waitKey(0);

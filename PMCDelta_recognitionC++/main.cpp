@@ -9,10 +9,10 @@ Mat refine;
 
 //Variables for showing images
 bool binaryShow = 0;
-bool refineShow = 1;
-bool separateShow = 1;
-bool orientationShow = 1;
-bool drawOrientation = 1;
+bool refineShow = 0;
+bool separateShow = 0;
+bool orientationShow = 0;
+bool drawOrientation = 0;
 bool showRotate = 1;
 time_t now;
 Mat img;
@@ -21,6 +21,9 @@ vector <Mat> separatedObjectsColor;
 vector <Mat> rotatedObjects;
 vector <Point2f> objectCenters;
 vector <double> objectOrientations;
+
+
+
 void CaptureFrame(){
 
 	//setup video capture device and link it to the first capture device
@@ -31,33 +34,39 @@ void CaptureFrame(){
 	//while(1){
 	captureDevice >> img;
 	now = time(0);
-	img = img(Rect(660, 220, 300, 300));
+	img = img(Rect(493, 70, 603, 663));
 	//imshow("Detecting...",img);
 	//cvWaitKey(33);
+	//ColorDisplay();
 	//cvWaitKey(0);
-	//}
+	//}//*/
+	
 	cout << img.size();
 	destroyAllWindows();
-	//imwrite("Picture.jpg", img);
+	imwrite("Picture.jpg", img);
 	system("cls");
 }
 
 void main()
 {
 
-	//CaptureFrame();
+	CaptureFrame();
 	
-	img = imread("Picture.jpg");
+	//img = imread("Picture.jpg");
 	// Image Processing
+	
 	BackgroundRemove();
 	
 	//Binarization();
 	Refinement();
+	//refine = binary;
 	ObjectSegment();
 	CenterOrientation();
 	RotateObject();
+	Recognition();
 	// Write out info
-	WriteOutInfo();
+	//WriteOutInfo();
+	//*/
 
 }
 

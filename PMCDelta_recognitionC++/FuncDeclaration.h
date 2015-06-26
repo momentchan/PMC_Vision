@@ -18,3 +18,8 @@ string int2str(int &);
 void saveImage(string, int, Mat);
 void ColorDisplay();
 static void onMouse(int event, int x, int y, int f, void*);
+void HistogramCalulation(Mat, int&, int&, int&);
+int findImageNum();
+int Resgistration(Mat img1);
+void Recognition();
+void shapeDetection(Mat);

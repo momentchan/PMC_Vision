@@ -94,3 +94,47 @@ static void onMouse(int event, int x, int y, int f, void*){
 	//imwrite("hsv.jpg",image);
 	imshow(window_name, image);
 }
+void HistogramCalulation(Mat image, int &maxH, int &maxS, int &maxV){
+	// allcoate memory for no of pixels for each intensity value
+
+	int histogramH[256];
+	int histogramS[256];
+	int histogramV[256];
+
+
+	// initialize all intensity values to 0
+	for (int i = 0; i < 255; i++){
+		histogramH[i] = 0;
+		histogramS[i] = 0;
+		histogramV[i] = 0;
+	}
+
+	// calculate the no of pixels for each intensity values
+	for (int y = 0; y < image.rows; y++)
+	for (int x = 0; x < image.cols; x++){
+		histogramH[(int)image.at<Vec3b>(y, x).val[0]]++;
+		histogramS[(int)image.at<Vec3b>(y, x).val[1]]++;
+		histogramV[(int)image.at<Vec3b>(y, x).val[2]]++;
+	}
+
+	// find the maximum intensity element from histogramH
+	int max_numH = histogramH[0];
+	int max_numS = histogramS[0];
+	int max_numV = histogramV[0];
+
+	for (int i = 1; i < 256; i++){
+		if (max_numH < histogramH[i]){
+			max_numH = histogramH[i];
+			maxH = i;
+		}
+		if (max_numS < histogramS[i]){
+			max_numS = histogramS[i];
+			maxS = i;
+		}
+		if (max_numV < histogramV[i]){
+			max_numV = histogramV[i];
+			maxV = i;
+		}
+	}
+
+}
