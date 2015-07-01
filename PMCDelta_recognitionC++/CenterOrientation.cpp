@@ -13,7 +13,7 @@ extern bool showRotate;
 
 void CenterOrientation(){
 	cout << "Computing center and orientation..." << endl << endl;
-	cout << separatedObjectsBlack.size();
+	//cout << separatedObjectsBlack.size();
 	for (int i = 0; i < separatedObjectsBlack.size(); i++){
 		Mat gray;
 		cvtColor(separatedObjectsBlack[i], gray, COLOR_BGR2GRAY);
@@ -83,7 +83,7 @@ void getOrientation(vector<Point> &pts, Mat &img)
 		waitKey(0);
 	}
 	objectCenters.push_back(pos);
-	objectOrientations.push_back(atan2(eigen_vecs[0].y, eigen_vecs[0].x));
+	objectOrientations.push_back(atan2(eigen_vecs[0].y, eigen_vecs[0].x) / 3.14 * 180);
 }
 void RotateObject()
 {

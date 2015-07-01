@@ -2,6 +2,7 @@
 
 extern bool binaryShow;
 extern bool refineShow;
+extern bool save;
 extern Mat img;
 extern Mat binary;
 extern Mat refine;
@@ -62,40 +63,43 @@ void findRange(Mat image, int meanH, int meanS, int meanV, int *rangeH, int *ran
 
 void BackgroundRemove()
 {	
-	Mat hsv; //Âà¨ìhsv¥­­±
-	Mat dst; //µ²ªG¹Ï¤ù
-	Mat colorMask; //¦UÃC¦âªº»Ö­È
+	Mat hsv; 
+	Mat dst;
+	Mat colorMask; 
 
-	//Mat mask = Mat::zeros(img.rows, img.cols, CV_8U); //¬°¤FÂo±¼¨ä¥LÃC¦â
-	cvtColor(img, hsv, CV_BGR2HSV);//Âà¦¨hsv¥­­±
+	//Mat mask = Mat::zeros(img.rows, img.cols, CV_8U); 
+	cvtColor(img, hsv, CV_BGR2HSV);
 
-	HistogramCalulation(hsv, meanH, meanS, meanV);
+	/*HistogramCalulation(hsv, meanH, meanS, meanV);
 
-	//cout<<"Major Color: "<<meanH<<" "<<meanS<<" "<<meanV<<endl;
+	cout<<"Major Color: "<<meanH<<" "<<meanS<<" "<<meanV<<endl;
 
 	int rangeH[2]; rangeH[0] = 180; rangeH[1] = 0;
 	int rangeS[2]; rangeS[0] = 255; rangeS[1] = 0;
 	int rangeV[2]; rangeV[0] = 255; rangeV[1] = 0;
 	findRange(hsv, meanH, meanS, meanV, rangeH, rangeS, rangeV);
 
-	//cout<<"Color Range: "<<endl;
-	//cout<<rangeH[0]<<" "<<rangeH[1]<<endl;
-	//cout<<rangeS[0]<<" "<<rangeS[1]<<endl;
-	//cout<<rangeV[0]<<" "<<rangeV[1]<<endl;
-
+	cout<<"Color Range: "<<endl;
+	cout<<rangeH[0]<<" "<<rangeH[1]<<endl;
+	cout<<rangeS[0]<<" "<<rangeS[1]<<endl;
+	cout<<rangeV[0]<<" "<<rangeV[1]<<endl;
+	*/
 
 	//inRange(hsv, Scalar(rangeH[0], rangeS[0], rangeV[0]), Scalar(rangeH[1]+5, 255, rangeV[1]+5), colorMask);
-	inRange(hsv, Scalar(0, 0, 0), Scalar(255, 120, 50), colorMask);
-
+	inRange(hsv, Scalar(0, 0, 0), Scalar(255, 150, 80), colorMask);
+	
 	img.copyTo(dst, colorMask);
 	binary = ~colorMask;
 	if (binaryShow){
 		ColorDisplay();
 		imshow("mask", binary);//show mask
-		//imshow("img", img);//show­ì¹Ï¤ù
 		imshow("result", dst);//showµ²ªG
 		waitKey();
 		destroyAllWindows();
+	}
+	if (save){
+		imwrite("Mask.jpg", binary);
+		imwrite("Extracted.jpg", dst);
 	}
 
 }
@@ -122,6 +126,9 @@ void Refinement(){
 	RefineThreshold(0, 0);
 	waitKey(0);
 	destroyAllWindows();
+	if (save)
+		imwrite("Refine.jpg", refine);
+	
 }
 void RefineThreshold(int, void*){
 	Mat element_close = getStructuringElement(morph_elem, Size(2 * morph_size + 1, 2 * morph_size + 1), Point(morph_size, morph_size));
@@ -130,5 +137,6 @@ void RefineThreshold(int, void*){
 	morphologyEx(refine, refine, close_operator, element_close);
 	if (refineShow)
 		imshow("Refine Image", refine);
+	
 	//imwrite("refine.jpg", refine);
 }

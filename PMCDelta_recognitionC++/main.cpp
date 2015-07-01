@@ -13,7 +13,10 @@ bool refineShow = 0;
 bool separateShow = 0;
 bool orientationShow = 0;
 bool drawOrientation = 0;
-bool showRotate = 1;
+bool showRotate = 0;
+bool recogintionShow = 0;
+bool convexShow = 0;
+bool save = 0;
 time_t now;
 Mat img;
 vector <Mat> separatedObjectsBlack;
@@ -21,8 +24,19 @@ vector <Mat> separatedObjectsColor;
 vector <Mat> rotatedObjects;
 vector <Point2f> objectCenters;
 vector <double> objectOrientations;
+vector <int> objectTypes;
 
+int hour[2], mini[2], sec[2], milisec[2];
 
+void setClock(int & hour, int & mini, int & sec, int & milisec){
+	SYSTEMTIME st;
+	GetSystemTime(&st);
+	hour = st.wHour;
+	mini = st.wMinute;
+	sec = st.wSecond;
+	milisec = st.wMilliseconds;
+	//cout << hour << ":" << mini << ":" << sec << ":" << milisec << endl;
+}
 
 void CaptureFrame(){
 
@@ -33,7 +47,7 @@ void CaptureFrame(){
 	captureDevice.set(CV_CAP_PROP_FRAME_HEIGHT, 896);
 	//while(1){
 	captureDevice >> img;
-	now = time(0);
+	setClock(hour[0], mini[0], sec[0], milisec[0]);
 	img = img(Rect(493, 70, 603, 663));
 	//imshow("Detecting...",img);
 	//cvWaitKey(33);
@@ -41,22 +55,22 @@ void CaptureFrame(){
 	//cvWaitKey(0);
 	//}//*/
 	
-	cout << img.size();
+	//cout << img.size();
 	destroyAllWindows();
-	imwrite("Picture.jpg", img);
-	system("cls");
+	if(save) imwrite("Picture.jpg", img);
+	//system("cls");
 }
 
 void main()
 {
-
+	
 	CaptureFrame();
 	
 	//img = imread("Picture.jpg");
 	// Image Processing
 	
 	BackgroundRemove();
-	
+	///*
 	//Binarization();
 	Refinement();
 	//refine = binary;
@@ -64,8 +78,10 @@ void main()
 	CenterOrientation();
 	RotateObject();
 	Recognition();
+	setClock(hour[1], mini[1], sec[1], milisec[1]);
+
 	// Write out info
-	//WriteOutInfo();
+	WriteOutInfo();
 	//*/
 
 }
@@ -73,11 +89,10 @@ void main()
 void WriteOutInfo(){
 	ofstream outputFile;
 	outputFile.open("ObjectInfo.txt");
-	tm *startTime = localtime(&now);
-	outputFile<<"Time:	"<< startTime->tm_hour<<":"<<startTime->tm_min<<":"<<startTime->tm_sec<< endl;
-	outputFile << "Id	Type	Center		Orientation" << endl;
+	outputFile << hour[0] << ":" << mini[0] << ":" << sec[0] << ":" << milisec[0] << endl;
+	outputFile << hour[1] << ":" << mini[1] << ":" << sec[1] << ":" << milisec[1] <<endl;
 	for (int i = 0; i < objectCenters.size(); i++){
-		outputFile << int2str(i) << "	0	" << objectCenters[i] <<"	"<< objectOrientations[i]/3.14*180 << endl;
+		outputFile << objectTypes[i] << " " << objectCenters[i] << " " << objectOrientations[i] << endl;
 	}
 	outputFile.close();
 

@@ -22,4 +22,4 @@ void HistogramCalulation(Mat, int&, int&, int&);
 int findImageNum();
 int Resgistration(Mat img1);
 void Recognition();
-void shapeDetection(Mat);
+int shapeDetection(Mat);
