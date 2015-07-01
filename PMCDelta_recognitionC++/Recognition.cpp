@@ -3,13 +3,45 @@
 extern vector <Mat> separatedObjectsBlack;
 extern vector <Mat> rotatedObjects;
 extern vector <int> objectTypes;
+extern vector <int> objectColors;
 extern bool save;
 extern Mat binary;
 extern bool recogintionShow;
 extern bool convexShow;
+
 void Recognition(){
-	for (int i = 0; i < separatedObjectsBlack.size(); i++)
+	// Type Recogition
+	for (int i = 0; i < separatedObjectsBlack.size(); i++){
 		objectTypes.push_back(shapeDetection(rotatedObjects[i]));
+		objectColors.push_back(colorDetection(rotatedObjects[i]));
+	}
+
+}
+int colorDetection(Mat src){
+	Mat hsv;
+	cvtColor(src, hsv, CV_BGR2HSV);
+	int H = 0, S = 0, V= 0;
+	int num = 0;
+	for (int i = 0; i < hsv.rows; i++)
+		for (int j = 0; j < hsv.cols;j++){
+			if (src.at<Vec3b>(i, j) != Vec3b(255, 255, 255)){
+				//cout << src.at<Vec3b>(i, j) << endl;// .val[0] << endl;
+				H += src.at<Vec3b>(i, j).val[0];
+				S += src.at<Vec3b>(i, j).val[1];
+				V += src.at<Vec3b>(i, j).val[2];
+				num++;
+			}
+	}
+	H /= num;
+	S /= num;
+	V /= num;
+	Vec3b color = Vec3b(H, S, V);
+	
+	
+	
+	//cout << norm(color) << " " << norm(Vec3b(255, 255, 255) - color)<< endl;
+
+	return norm(color)>norm(Vec3b(255, 255, 255) - color)? 1:0;
 }
 
 static double angle(Point pt1, Point pt2, Point pt0)

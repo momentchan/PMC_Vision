@@ -10,7 +10,7 @@ Mat refine;
 //Variables for showing images
 bool binaryShow = 0;
 bool refineShow = 0;
-bool separateShow = 0;
+bool separateShow =  0;
 bool orientationShow = 0;
 bool drawOrientation = 0;
 bool showRotate = 0;
@@ -25,6 +25,7 @@ vector <Mat> rotatedObjects;
 vector <Point2f> objectCenters;
 vector <double> objectOrientations;
 vector <int> objectTypes;
+vector <int> objectColors;
 
 int hour[2], mini[2], sec[2], milisec[2];
 
@@ -64,9 +65,9 @@ void CaptureFrame(){
 void main()
 {
 	
-	CaptureFrame();
+	//CaptureFrame();
 	
-	//img = imread("Picture.jpg");
+	setClock(hour[0], mini[0], sec[0], milisec[0]); img = imread("Picture.jpg");
 	// Image Processing
 	
 	BackgroundRemove();
@@ -89,10 +90,15 @@ void main()
 void WriteOutInfo(){
 	ofstream outputFile;
 	outputFile.open("ObjectInfo.txt");
+	// Txt format:
+	// Start Time
+	// End Time
+	// Type Color Center Orientation
+
 	outputFile << hour[0] << ":" << mini[0] << ":" << sec[0] << ":" << milisec[0] << endl;
 	outputFile << hour[1] << ":" << mini[1] << ":" << sec[1] << ":" << milisec[1] <<endl;
 	for (int i = 0; i < objectCenters.size(); i++){
-		outputFile << objectTypes[i] << " " << objectCenters[i] << " " << objectOrientations[i] << endl;
+		outputFile << objectTypes[i] << " " << objectColors[i] << " " << objectCenters[i] << " " << objectOrientations[i] << endl;
 	}
 	outputFile.close();
 

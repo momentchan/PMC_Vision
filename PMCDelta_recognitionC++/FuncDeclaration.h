@@ -23,3 +23,4 @@ int findImageNum();
 int Resgistration(Mat img1);
 void Recognition();
 int shapeDetection(Mat);
+int colorDetection(Mat src);
