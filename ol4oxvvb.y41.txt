@@ -1,0 +1,79 @@
+﻿shape recognition
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# Changes to be committed:
+#	new file:   5c5ragff.cvr.txt
+#	deleted:    Output-Build.txt
+#	deleted:    "PMCDelta_recognitionC++ (\350\210\207 hung ming june \350\241\235\347\252\201\347\232\204\350\244\207\346\234\254 2015-06-18).sdf"
+#	deleted:    PMCDelta_recognitionC++.opensdf
+#	modified:   PMCDelta_recognitionC++.sdf
+#	modified:   PMCDelta_recognitionC++.v12.suo
+#	modified:   PMCDelta_recognitionC++/Binarization.cpp
+#	modified:   PMCDelta_recognitionC++/CenterOrientation.cpp
+#	new file:   PMCDelta_recognitionC++/Extracted.jpg
+#	modified:   PMCDelta_recognitionC++/FuncDeclaration.h
+#	new file:   PMCDelta_recognitionC++/Hull.jpg
+#	new file:   PMCDelta_recognitionC++/Mask.jpg
+#	modified:   PMCDelta_recognitionC++/ObjectInfo.txt
+#	modified:   PMCDelta_recognitionC++/Original Objects/Object0.jpg
+#	modified:   PMCDelta_recognitionC++/Original Objects/Object1.jpg
+#	modified:   PMCDelta_recognitionC++/Original Objects/Object2.jpg
+#	modified:   PMCDelta_recognitionC++/Original Objects/Object3.jpg
+#	modified:   PMCDelta_recognitionC++/Original Objects/Object4.jpg
+#	modified:   PMCDelta_recognitionC++/Original Objects/Object5.jpg
+#	deleted:    PMCDelta_recognitionC++/Original Objects/Object6.jpg
+#	deleted:    "PMCDelta_recognitionC++/PMCDelta_recognitionC++ (\350\210\207 Tseng Shih Hung \350\241\235\347\252\201\347\232\204\350\244\207\346\234\254 2015-06-18).sdf"
+#	deleted:    PMCDelta_recognitionC++/PMCDelta_recognitionC++.sdf
+#	deleted:    PMCDelta_recognitionC++/Picture 1.jpg
+#	deleted:    PMCDelta_recognitionC++/Picture 2.jpg
+#	deleted:    PMCDelta_recognitionC++/Picture 3.jpg
+#	modified:   PMCDelta_recognitionC++/Picture.jpg
+#	modified:   PMCDelta_recognitionC++/Recognition.cpp
+#	new file:   PMCDelta_recognitionC++/Result.jpg
+#	modified:   PMCDelta_recognitionC++/Rotated Objects/Object0.jpg
+#	modified:   PMCDelta_recognitionC++/Rotated Objects/Object1.jpg
+#	modified:   PMCDelta_recognitionC++/Rotated Objects/Object2.jpg
+#	modified:   PMCDelta_recognitionC++/Rotated Objects/Object3.jpg
+#	modified:   PMCDelta_recognitionC++/Rotated Objects/Object4.jpg
+#	modified:   PMCDelta_recognitionC++/Rotated Objects/Object5.jpg
+#	deleted:    PMCDelta_recognitionC++/binary.jpg
+#	deleted:    PMCDelta_recognitionC++/edges.jpg
+#	deleted:    PMCDelta_recognitionC++/gray.jpg
+#	deleted:    PMCDelta_recognitionC++/gray2.jpg
+#	deleted:    PMCDelta_recognitionC++/label.jpg
+#	deleted:    PMCDelta_recognitionC++/label_image.jpg
+#	deleted:    PMCDelta_recognitionC++/lego2Big.jpg
+#	modified:   PMCDelta_recognitionC++/main.cpp
+#	modified:   PMCDelta_recognitionC++/refine.jpg
+#	modified:   PMCDelta_recognitionC++/x64/Release/Binarization.obj
+#	modified:   PMCDelta_recognitionC++/x64/Release/CenterOrientation.obj
+#	modified:   PMCDelta_recognitionC++/x64/Release/PMCDelta.F9053AEC.tlog/CL.read.1.tlog
+#	modified:   PMCDelta_recognitionC++/x64/Release/PMCDelta.F9053AEC.tlog/CL.write.1.tlog
+#	modified:   PMCDelta_recognitionC++/x64/Release/PMCDelta.F9053AEC.tlog/PMCDelta_recognitionC++.lastbuildstate
+#	modified:   PMCDelta_recognitionC++/x64/Release/PMCDelta.F9053AEC.tlog/cl.command.1.tlog
+#	modified:   PMCDelta_recognitionC++/x64/Release/PMCDelta.F9053AEC.tlog/link.command.1.tlog
+#	modified:   PMCDelta_recognitionC++/x64/Release/PMCDelta.F9053AEC.tlog/link.read.1.tlog
+#	modified:   PMCDelta_recognitionC++/x64/Release/PMCDelta.F9053AEC.tlog/link.write.1.tlog
+#	modified:   PMCDelta_recognitionC++/x64/Release/PMCDelta_recognitionC++.log
+#	modified:   PMCDelta_recognitionC++/x64/Release/Recognition.obj
+#	modified:   PMCDelta_recognitionC++/x64/Release/Segmentation.obj
+#	modified:   PMCDelta_recognitionC++/x64/Release/Utility.obj
+#	modified:   PMCDelta_recognitionC++/x64/Release/main.obj
+#	modified:   PMCDelta_recognitionC++/x64/Release/vc120.pdb
+#	deleted:    _UpgradeReport_Files/UpgradeReport.css
+#	deleted:    _UpgradeReport_Files/UpgradeReport.xslt
+#	deleted:    _UpgradeReport_Files/UpgradeReport_Minus.gif
+#	deleted:    _UpgradeReport_Files/UpgradeReport_Plus.gif
+#	renamed:    x2keivv5.umy.txt -> dr4oddlg.21v.txt
+#	renamed:    jkwi0ics.3jb.txt -> iuzjmnx1.vsv.txt
+#	new file:   pu1q3ohq.1nc.txt
+#	new file:   via4mgcf.phl.txt
+#	modified:   x64/Release/ObjectInfo.txt
+#	modified:   x64/Release/PMCDelta_recognitionC++.exe
+#	modified:   x64/Release/PMCDelta_recognitionC++.pdb
+#	new file:   zxc0iocl.q2p.txt
+#
+
