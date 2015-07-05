@@ -73,7 +73,8 @@ void CaptureFrame(){
 	//system("cls");
 }
 
-DLL void main()
+//DLL void main()
+int WINAPI WinMain(HINSTANCE inst, HINSTANCE prev, LPSTR cmd, int show)
 {
 	
 	//ObjectInfo *objectinfo = new ObjectInfo();
