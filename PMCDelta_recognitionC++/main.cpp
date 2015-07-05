@@ -13,10 +13,10 @@ bool tune = 0;
 bool binaryShow = 0;
 bool refineShow = 0;
 bool separateShow = 0;
-bool orientationShow = 1;
-bool drawOrientation = 1;
-bool showRotate = 1;
-bool recogintionShow = 1;
+bool orientationShow = 0;
+bool drawOrientation = 0;
+bool showRotate = 0;
+bool recogintionShow = 0;
 bool convexShow = 0;
 bool save = 0;
 
@@ -77,10 +77,11 @@ DLL void main()
 {
 	
 	//ObjectInfo *objectinfo = new ObjectInfo();
-	
-	CaptureFrame();  
-	setClock(hour[0], mini[0], sec[0], milisec[0]); 
-    //img = imread("Picture.jpg");
+	//objectinfo->ReadImage();
+	//objectinfo->ShowImage();
+	///*
+	//CaptureFrame();  
+    img = imread("Picture.jpg");
 
 	// Image Processing
 	
@@ -93,7 +94,7 @@ DLL void main()
 	CenterOrientation();
 	
 	RotateObject();
-	///*
+	
 	Translation();
 	Recognition();
 	setClock(hour[1], mini[1], sec[1], milisec[1]);

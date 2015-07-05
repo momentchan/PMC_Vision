@@ -64,8 +64,8 @@ void findRange(Mat image, int meanH, int meanS, int meanV, int *rangeH, int *ran
 Mat hsv;
 Mat dst;
 Mat colorMask;
-int LH = 0; int HH = 86;
-int LS = 0; int HS = 255;
+int LH = 0; int HH = 85;
+int LS = 206; int HS = 255;
 int LV = 0; int HV = 255;
 
 void TuneThreshold(int, void*){
@@ -76,14 +76,16 @@ void TuneThreshold(int, void*){
 	imshow("Tuning", binary);
 }
 void Tuning(){
-	namedWindow("Tuning", 1);
+	
+	namedWindow("Tuning");
+	
+	
 	createTrackbar("LowH", "Tuning", &LH, 180, TuneThreshold);
 	createTrackbar("HighH", "Tuning", &HH, 180, TuneThreshold);
 	createTrackbar("LowS", "Tuning", &LS, 255, TuneThreshold);
 	createTrackbar("HighS", "Tuning", &HS, 255, TuneThreshold);
 	createTrackbar("LowV", "Tuning", &LV, 255, TuneThreshold);
 	createTrackbar("HighV", "Tuning", &HV, 255, TuneThreshold);
-
 	TuneThreshold(0, 0);
 	waitKey(0);
 }

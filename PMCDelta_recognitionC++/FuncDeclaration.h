@@ -4,7 +4,6 @@
 class ObjectInfo{
 public:
 	ObjectInfo(){}
-
 	void ObjectInfoAssign(vector<Point2f> centers, vector <double> orientations, vector <int> types, vector <int> colors){
 		objectNum = centers.size();
 		objectCenters = centers;
@@ -19,8 +18,11 @@ public:
 			cout << " Object[" << i << "]" << " Type: " << objectTypes[i] << " Color: " << objectColors[i]
 			<< " Center: " << objectCenters[i] << " Orientation: " << objectOrientations[i] << endl;
 	}
+	void ReadImage(){ img = imread("Picture.jpg"); }
+	void ShowImage(){ imshow("",img); waitKey(0); }
 
 private:
+	Mat img;
 	int objectNum;
 	vector <Point2f> objectCenters;
 	vector <double> objectOrientations;

@@ -10,7 +10,7 @@ extern bool drawOrientation;
 extern bool orientationShow;
 extern bool showRotate;
 
-Point2f displace(17.8, 41.5);
+Point2f displace(-17.8, 41.5);
 Point2f imageCenter(593 / 2, 704 / 2);
 float scaleRatio = 0.036;  // 25/704 cm
 int windowSize = 300;
@@ -141,6 +141,6 @@ void RotateObject()
 void Translation(){
 
 	for (int i = 0; i < objectCenters.size(); i++){
-		objectCenters[i] = (objectCenters[i] - Point2f(separatedObjectsBlack[i].cols / 2, separatedObjectsBlack[i].rows / 2))*scaleRatio+displace;
+		objectCenters[i] = (objectCenters[i] - Point2f(separatedObjectsBlack[i].cols / 2, separatedObjectsBlack[i].rows / 2))* scaleRatio + displace;
 	}
 }
