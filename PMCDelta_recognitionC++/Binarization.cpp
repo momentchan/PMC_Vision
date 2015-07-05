@@ -3,6 +3,7 @@
 extern bool binaryShow;
 extern bool refineShow;
 extern bool save;
+extern bool tune;
 extern Mat img;
 extern Mat binary;
 extern Mat refine;
@@ -60,43 +61,63 @@ void findRange(Mat image, int meanH, int meanS, int meanV, int *rangeH, int *ran
 	//	cout<<maxdistS<<endl;
 	//cout<<maxdistV<<endl;
 }
+Mat hsv;
+Mat dst;
+Mat colorMask;
+int LH = 0; int HH = 86;
+int LS = 0; int HS = 255;
+int LV = 0; int HV = 255;
+
+void TuneThreshold(int, void*){
+	inRange(hsv, Scalar(LH, LS, LV), Scalar(HH, HS, HV), colorMask);
+
+	img.copyTo(dst, colorMask);
+	binary = colorMask;
+	imshow("Tuning", binary);
+}
+void Tuning(){
+	namedWindow("Tuning", 1);
+	createTrackbar("LowH", "Tuning", &LH, 180, TuneThreshold);
+	createTrackbar("HighH", "Tuning", &HH, 180, TuneThreshold);
+	createTrackbar("LowS", "Tuning", &LS, 255, TuneThreshold);
+	createTrackbar("HighS", "Tuning", &HS, 255, TuneThreshold);
+	createTrackbar("LowV", "Tuning", &LV, 255, TuneThreshold);
+	createTrackbar("HighV", "Tuning", &HV, 255, TuneThreshold);
+
+	TuneThreshold(0, 0);
+	waitKey(0);
+}
 
 void BackgroundRemove()
 {	
-	Mat hsv; 
-	Mat dst;
-	Mat colorMask; 
+
 
 	//Mat mask = Mat::zeros(img.rows, img.cols, CV_8U); 
 	cvtColor(img, hsv, CV_BGR2HSV);
-
-	/*HistogramCalulation(hsv, meanH, meanS, meanV);
-
-	cout<<"Major Color: "<<meanH<<" "<<meanS<<" "<<meanV<<endl;
-
-	int rangeH[2]; rangeH[0] = 180; rangeH[1] = 0;
-	int rangeS[2]; rangeS[0] = 255; rangeS[1] = 0;
-	int rangeV[2]; rangeV[0] = 255; rangeV[1] = 0;
-	findRange(hsv, meanH, meanS, meanV, rangeH, rangeS, rangeV);
-
-	cout<<"Color Range: "<<endl;
-	cout<<rangeH[0]<<" "<<rangeH[1]<<endl;
-	cout<<rangeS[0]<<" "<<rangeS[1]<<endl;
-	cout<<rangeV[0]<<" "<<rangeV[1]<<endl;
-	*/
-
-	//inRange(hsv, Scalar(rangeH[0], rangeS[0], rangeV[0]), Scalar(rangeH[1]+5, 255, rangeV[1]+5), colorMask);
-	inRange(hsv, Scalar(0, 0, 0), Scalar(255, 150, 80), colorMask);
 	
-	img.copyTo(dst, colorMask);
-	binary = ~colorMask;
-	if (binaryShow){
+	
+	if (tune){
+		LH = 0; HH = 180;
+		LS = 0; HS = 255;
+		LV = 0; HV = 255;
 		ColorDisplay();
-		imshow("mask", binary);//show mask
-		imshow("result", dst);//showµ²ªG
-		waitKey();
-		destroyAllWindows();
+		Tuning(); 
+		imshow("result", dst);
 	}
+	else{
+		cout << Scalar(LH, LS, LV) << endl << Scalar(HH, HS, HV)<<endl;
+		inRange(hsv, Scalar(LH, LS, LV), Scalar(HH, HS, HV), colorMask);
+		img.copyTo(dst, colorMask);
+		binary = colorMask;
+		if (binaryShow){
+			ColorDisplay();
+			imshow("Binary", binary);
+			imshow("result", dst);
+			waitKey();
+			destroyAllWindows();
+		}
+	}
+	
 	if (save){
 		imwrite("Mask.jpg", binary);
 		imwrite("Extracted.jpg", dst);
@@ -117,6 +138,8 @@ void Binarization(){
 	waitKey(0);
 	destroyAllWindows();
 }
+
+
 void Refinement(){
 	cout << "Image refining..." << endl << endl;
 	if (refineShow){

@@ -1,5 +1,35 @@
 #include "main.h"
 
+
+class ObjectInfo{
+public:
+	ObjectInfo(){}
+
+	void ObjectInfoAssign(vector<Point2f> centers, vector <double> orientations, vector <int> types, vector <int> colors){
+		objectNum = centers.size();
+		objectCenters = centers;
+		objectOrientations = orientations;
+		objectTypes = types;
+		objectColors = colors;
+	}
+	void DisplayInfo(){
+		cout << " Object Number : " << objectNum << endl;
+		
+		for (int i = 0; i < objectNum; i++)
+			cout << " Object[" << i << "]" << " Type: " << objectTypes[i] << " Color: " << objectColors[i]
+			<< " Center: " << objectCenters[i] << " Orientation: " << objectOrientations[i] << endl;
+	}
+
+private:
+	int objectNum;
+	vector <Point2f> objectCenters;
+	vector <double> objectOrientations;
+	vector <int> objectTypes;
+	vector <int> objectColors;
+};
+
+
+
 /** Function Headers */
 void BackgroundRemove();
 void Binarization();
@@ -24,3 +54,5 @@ int Resgistration(Mat img1);
 void Recognition();
 int shapeDetection(Mat);
 int colorDetection(Mat src);
+void DisplayInfo(ObjectInfo);
+void Translation();

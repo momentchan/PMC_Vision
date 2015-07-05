@@ -5,11 +5,16 @@ extern vector <Mat> separatedObjectsColor;
 extern vector <Mat> rotatedObjects;
 extern vector <Point2f> objectCenters;
 extern vector <double> objectOrientations;
-int windowSize = 300;
 
 extern bool drawOrientation;
 extern bool orientationShow;
 extern bool showRotate;
+
+Point2f displace(17.8, 41.5);
+Point2f imageCenter(593 / 2, 704 / 2);
+float scaleRatio = 0.036;  // 25/704 cm
+int windowSize = 300;
+
 
 void CenterOrientation(){
 	cout << "Computing center and orientation..." << endl << endl;
@@ -17,23 +22,29 @@ void CenterOrientation(){
 	for (int i = 0; i < separatedObjectsBlack.size(); i++){
 		Mat gray;
 		cvtColor(separatedObjectsBlack[i], gray, COLOR_BGR2GRAY);
-
+		
 		// Apply thresholding;
 		threshold(gray, gray, 150, 255, CV_THRESH_BINARY);
-
+		
 		// Find all the contours in the thresholded image
 		vector<vector<Point> > contours;
 		vector<Vec4i> hierarchy;
 		findContours(gray, contours, hierarchy, CV_RETR_LIST, CV_CHAIN_APPROX_NONE);
-		
+
 		for (size_t j = 0; j < 1; ++j)
 		{
 			// Calculate the area of each contour
 			double area = contourArea(contours[j]);
 			// Ignore contours that are too small or too large
-			if (area < 1e2 || 1e5 < area) continue;
+			if (area < 1e2 || 1e5 < area) {
+				separatedObjectsBlack.erase(separatedObjectsBlack.begin() + i);
+				separatedObjectsColor.erase(separatedObjectsColor.begin() + i);
+				i--;
+				continue;
+			}
 			// Draw each contour only for visualisation purposes
-			//drawContours(src, contours, i, CV_RGB(255, 0, 0), 2, 8, hierarchy, 0);
+			
+			
 			// Find the orientation of each shape
 			if (drawOrientation){
 				getOrientation(contours[j], separatedObjectsColor[i]);
@@ -42,7 +53,6 @@ void CenterOrientation(){
 				Mat img = separatedObjectsColor[i].clone();
 				getOrientation(contours[j], img);
 			}
-
 		}
 	}
 	destroyAllWindows();
@@ -59,7 +69,7 @@ void getOrientation(vector<Point> &pts, Mat &img)
 	PCA pca_analysis(data_pts, Mat(), CV_PCA_DATA_AS_ROW);
 
 	//Store the position of the object
-	Point pos = Point(pca_analysis.mean.at<double>(0, 0), pca_analysis.mean.at<double>(0, 1));
+	Point pos = Point2f(pca_analysis.mean.at<double>(0, 0), pca_analysis.mean.at<double>(0, 1));
 
 	//Store the eigenvalues and eigenvectors
 	vector<Point2d> eigen_vecs(2);
@@ -82,6 +92,7 @@ void getOrientation(vector<Point> &pts, Mat &img)
 		imshow("Object Orientation", img);
 		waitKey(0);
 	}
+	
 	objectCenters.push_back(pos);
 	objectOrientations.push_back(atan2(eigen_vecs[0].y, eigen_vecs[0].x) / 3.14 * 180);
 }
@@ -125,5 +136,11 @@ void RotateObject()
 		}
 		saveImage("Original Objects/Object", i, src);
 		saveImage("Rotated Objects/Object", i, dst);
+	}
+}
+void Translation(){
+
+	for (int i = 0; i < objectCenters.size(); i++){
+		objectCenters[i] = (objectCenters[i] - Point2f(separatedObjectsBlack[i].cols / 2, separatedObjectsBlack[i].rows / 2))*scaleRatio+displace;
 	}
 }

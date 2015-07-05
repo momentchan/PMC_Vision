@@ -1,6 +1,6 @@
-#include "main.h"
 #include "FuncDeclaration.h"
 #include <ctime>
+#define DLL extern "C" __declspec(dllexport)
 
 
 //**********Variables for image binarization**********
@@ -8,15 +8,22 @@ Mat binary;
 Mat refine;
 
 //Variables for showing images
+bool video = 0;
+bool tune = 0;
 bool binaryShow = 0;
 bool refineShow = 0;
-bool separateShow =  0;
-bool orientationShow = 0;
-bool drawOrientation = 0;
-bool showRotate = 0;
-bool recogintionShow = 0;
+bool separateShow = 0;
+bool orientationShow = 1;
+bool drawOrientation = 1;
+bool showRotate = 1;
+bool recogintionShow = 1;
 bool convexShow = 0;
 bool save = 0;
+
+
+
+
+
 time_t now;
 Mat img;
 vector <Mat> separatedObjectsBlack;
@@ -46,15 +53,19 @@ void CaptureFrame(){
 	captureDevice.open(0);
 	captureDevice.set(CV_CAP_PROP_FRAME_WIDTH, 1600);
 	captureDevice.set(CV_CAP_PROP_FRAME_HEIGHT, 896);
-	//while(1){
+	while(video){
+		captureDevice >> img;
+		//setClock(hour[0], mini[0], sec[0], milisec[0]);
+		//img = img(Rect(493, 70, 603, 663));
+		imshow("Detecting...",img);
+		cvWaitKey(33);
+		imwrite("Picture.jpg", img);
+
+	}
 	captureDevice >> img;
 	setClock(hour[0], mini[0], sec[0], milisec[0]);
-	img = img(Rect(493, 70, 603, 663));
-	//imshow("Detecting...",img);
-	//cvWaitKey(33);
-	//ColorDisplay();
-	//cvWaitKey(0);
-	//}//*/
+	img = img(Rect(480, 35, 593, 704));
+	
 	
 	//cout << img.size();
 	destroyAllWindows();
@@ -62,30 +73,43 @@ void CaptureFrame(){
 	//system("cls");
 }
 
-void main()
+DLL void main()
 {
 	
-	//CaptureFrame();
+	//ObjectInfo *objectinfo = new ObjectInfo();
 	
-	setClock(hour[0], mini[0], sec[0], milisec[0]); img = imread("Picture.jpg");
+	CaptureFrame();  
+	setClock(hour[0], mini[0], sec[0], milisec[0]); 
+    //img = imread("Picture.jpg");
+
 	// Image Processing
 	
 	BackgroundRemove();
-	///*
+	if (!tune){
 	//Binarization();
 	Refinement();
 	//refine = binary;
 	ObjectSegment();
 	CenterOrientation();
+	
 	RotateObject();
+	///*
+	Translation();
 	Recognition();
 	setClock(hour[1], mini[1], sec[1], milisec[1]);
 
 	// Write out info
 	WriteOutInfo();
+	//c = objectOrientations[0];
+	//userName = "test";
+	
+	//objectinfo->ObjectInfoAssign(objectCenters, objectOrientations, objectTypes, objectColors);
+	//objectinfo->DisplayInfo();
 	//*/
-
+	}
+	
 }
+
 
 void WriteOutInfo(){
 	ofstream outputFile;
@@ -98,7 +122,7 @@ void WriteOutInfo(){
 	outputFile << hour[0] << ":" << mini[0] << ":" << sec[0] << ":" << milisec[0] << endl;
 	outputFile << hour[1] << ":" << mini[1] << ":" << sec[1] << ":" << milisec[1] <<endl;
 	for (int i = 0; i < objectCenters.size(); i++){
-		outputFile << objectTypes[i] << " " << objectColors[i] << " " << objectCenters[i] << " " << objectOrientations[i] << endl;
+		outputFile << objectTypes[i] << " " << objectColors[i] << " " << objectCenters[i]  << " " << objectOrientations[i] << endl;
 	}
 	outputFile.close();
 
