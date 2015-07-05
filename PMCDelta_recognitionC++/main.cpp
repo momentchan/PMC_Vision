@@ -93,26 +93,29 @@ int WINAPI WinMain(HINSTANCE inst, HINSTANCE prev, LPSTR cmd, int show)
 	//refine = binary;
 	ObjectSegment();
 	CenterOrientation();
-	
+	OutputImage();
 	RotateObject();
-	
 	Translation();
 	Recognition();
 	setClock(hour[1], mini[1], sec[1], milisec[1]);
 
 	// Write out info
 	WriteOutInfo();
-	//c = objectOrientations[0];
-	//userName = "test";
 	
-	//objectinfo->ObjectInfoAssign(objectCenters, objectOrientations, objectTypes, objectColors);
-	//objectinfo->DisplayInfo();
-	//*/
 	}
 	
 }
 
-
+void OutputImage(){
+	//Point2f src_center(img.cols / 2.0F, img.rows / 2.0F);
+	//Mat rot_mat = getRotationMatrix2D(src_center, 90,1);
+	//Mat dst;
+	//warpAffine(img, dst, rot_mat, Size(img.rows,img.cols));
+	Mat dst;
+	transpose(img, dst);
+	flip(dst, dst, -1);
+	imwrite("Result.jpg", dst);
+}
 void WriteOutInfo(){
 	ofstream outputFile;
 	outputFile.open("ObjectInfo.txt");

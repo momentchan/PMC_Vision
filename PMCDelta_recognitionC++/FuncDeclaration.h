@@ -56,5 +56,5 @@ int Resgistration(Mat img1);
 void Recognition();
 int shapeDetection(Mat);
 int colorDetection(Mat src);
-void DisplayInfo(ObjectInfo);
 void Translation();
+void OutputImage();

@@ -10,6 +10,8 @@ extern bool drawOrientation;
 extern bool orientationShow;
 extern bool showRotate;
 
+extern Mat img;
+
 Point2f displace(-17.8, 41.5);
 Point2f imageCenter(593 / 2, 704 / 2);
 float scaleRatio = 0.036;  // 25/704 cm
@@ -42,22 +44,20 @@ void CenterOrientation(){
 				i--;
 				continue;
 			}
-			// Draw each contour only for visualisation purposes
-			
-			
+			drawContours(img, contours, 0, Scalar(0, 0, 255), 2);
 			// Find the orientation of each shape
 			if (drawOrientation){
 				getOrientation(contours[j], separatedObjectsColor[i]);
 			}
 			else {
-				Mat img = separatedObjectsColor[i].clone();
-				getOrientation(contours[j], img);
+				Mat src = separatedObjectsColor[i].clone();
+				getOrientation(contours[j], src);
 			}
 		}
 	}
 	destroyAllWindows();
 }
-void getOrientation(vector<Point> &pts, Mat &img)
+void getOrientation(vector<Point> &pts, Mat &src)
 {
 	//Construct a buffer used by the pca analysis
 	Mat data_pts = Mat(pts.size(), 2, CV_64FC1);
@@ -84,12 +84,16 @@ void getOrientation(vector<Point> &pts, Mat &img)
 
 	if (drawOrientation){
 		// Draw the principal components
-		circle(img, pos, 10, CV_RGB(255, 255, 255), 2);
-		line(img, pos, pos + 0.02 * Point(eigen_vecs[0].x * eigen_val[0], eigen_vecs[0].y * eigen_val[0]), CV_RGB(255, 255, 0));
-		line(img, pos, pos + 0.02 * Point(eigen_vecs[1].x * eigen_val[1], eigen_vecs[1].y * eigen_val[1]), CV_RGB(0, 255, 255));
+		circle(src, pos, 10, CV_RGB(255, 255, 255), 2);
+		line(src, pos, pos + 0.02 * Point(eigen_vecs[0].x * eigen_val[0], eigen_vecs[0].y * eigen_val[0]), CV_RGB(255, 255, 0));
+		line(src, pos, pos + 0.02 * Point(eigen_vecs[1].x * eigen_val[1], eigen_vecs[1].y * eigen_val[1]), CV_RGB(0, 255, 255));
 	}
+	circle(img, pos, 10, CV_RGB(255, 255, 255), 2);
+	line(img, pos, pos + 0.02 * Point(eigen_vecs[0].x * eigen_val[0], eigen_vecs[0].y * eigen_val[0]), CV_RGB(255, 255, 0));
+	line(img, pos, pos + 0.02 * Point(eigen_vecs[1].x * eigen_val[1], eigen_vecs[1].y * eigen_val[1]), CV_RGB(0, 255, 255));
+
 	if (orientationShow){
-		imshow("Object Orientation", img);
+		imshow("Object Orientation", src);
 		waitKey(0);
 	}
 	
