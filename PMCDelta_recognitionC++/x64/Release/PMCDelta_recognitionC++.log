@@ -1,55 +1,55 @@
-﻿Build started 2015/7/4 上午 01:56:10.
-     1>Project "C:\Users\Delta\Documents\GitHub\PMC_Vision\PMCDelta_recognitionC++\PMCDelta_recognitionC++.vcxproj" on node 2 (Build target(s)).
+﻿Build started 2015/7/5 下午 09:26:53.
+     1>Project "C:\Users\Fred\Documents\GitHub\PMC_Vision Dll Export ver\PMC_Vision\PMCDelta_recognitionC++\PMCDelta_recognitionC++.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /IC:\opencv\build\x64\vc12\..\..\include /Zi /nologo /W3 /WX- /sdl /O2 /Oi /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Release\\" /Fd"x64\Release\vc120.pdb" /Gd /TP /errorReport:prompt Binarization.cpp CenterOrientation.cpp Recognition.cpp Segmentation.cpp Utility.cpp main.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /IC:\opencv\build\x64\vc12\..\..\include /Zi /nologo /W3 /WX- /sdl /O2 /Oi /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _LIB /D _WINDLL /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Release\\" /Fd"x64\Release\vc120.pdb" /Gd /TP /errorReport:prompt Binarization.cpp CenterOrientation.cpp main.cpp Recognition.cpp Segmentation.cpp Utility.cpp
          Binarization.cpp
-     1>C:\opencv\build\include\opencv2/core/mat.hpp(1965): warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
-     1>C:\opencv\build\include\opencv2/core/persistence.hpp : warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
-     1>C:\opencv\build\include\opencv2/core/utility.hpp : warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
+     1>C:\opencv\build\include\opencv2/core/mat.hpp(1413): warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
+     1>c:\users\fred\documents\github\pmc_vision dll export ver\pmc_vision\pmcdelta_recognitionc++\FuncDeclaration.h(8): warning C4267: '=' : conversion from 'size_t' to 'int', possible loss of data
          CenterOrientation.cpp
-     1>C:\opencv\build\include\opencv2/core/mat.hpp(1965): warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
-     1>C:\opencv\build\include\opencv2/core/persistence.hpp : warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
-     1>C:\opencv\build\include\opencv2/core/utility.hpp : warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
-     1>CenterOrientation.cpp(53): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
-     1>CenterOrientation.cpp(62): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
-     1>CenterOrientation.cpp(78): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
-     1>CenterOrientation.cpp(79): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
-     1>CenterOrientation.cpp(92): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>CenterOrientation.cpp(97): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
-     1>CenterOrientation.cpp(98): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
-     1>CenterOrientation.cpp(100): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>CenterOrientation.cpp(103): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>CenterOrientation.cpp(105): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>CenterOrientation.cpp(113): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>C:\opencv\build\include\opencv2/core/mat.hpp(1413): warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
+     1>c:\users\fred\documents\github\pmc_vision dll export ver\pmc_vision\pmcdelta_recognitionc++\FuncDeclaration.h(8): warning C4267: '=' : conversion from 'size_t' to 'int', possible loss of data
+     1>CenterOrientation.cpp(15): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>CenterOrientation.cpp(17): warning C4305: 'initializing' : truncation from 'double' to 'float'
+     1>CenterOrientation.cpp(65): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+     1>CenterOrientation.cpp(74): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>CenterOrientation.cpp(90): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>CenterOrientation.cpp(91): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>CenterOrientation.cpp(94): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>CenterOrientation.cpp(95): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>CenterOrientation.cpp(109): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>CenterOrientation.cpp(114): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>CenterOrientation.cpp(115): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>CenterOrientation.cpp(117): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>CenterOrientation.cpp(120): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>CenterOrientation.cpp(122): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>CenterOrientation.cpp(130): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>CenterOrientation.cpp(150): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+         main.cpp
+     1>C:\opencv\build\include\opencv2/core/mat.hpp(1413): warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
+     1>c:\users\fred\documents\github\pmc_vision dll export ver\pmc_vision\pmcdelta_recognitionc++\FuncDeclaration.h(8): warning C4267: '=' : conversion from 'size_t' to 'int', possible loss of data
          Recognition.cpp
-     1>C:\opencv\build\include\opencv2/core/mat.hpp(1965): warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
-     1>C:\opencv\build\include\opencv2/core/persistence.hpp : warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
-     1>C:\opencv\build\include\opencv2/core/utility.hpp : warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
+     1>C:\opencv\build\include\opencv2/core/mat.hpp(1413): warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
+     1>c:\users\fred\documents\github\pmc_vision dll export ver\pmc_vision\pmcdelta_recognitionc++\FuncDeclaration.h(8): warning C4267: '=' : conversion from 'size_t' to 'int', possible loss of data
      1>Recognition.cpp(134): warning C4267: 'initializing' : conversion from 'size_t' to 'int', possible loss of data
          Segmentation.cpp
-     1>C:\opencv\build\include\opencv2/core/mat.hpp(1965): warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
-     1>C:\opencv\build\include\opencv2/core/persistence.hpp : warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
-     1>C:\opencv\build\include\opencv2/core/utility.hpp : warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
+     1>C:\opencv\build\include\opencv2/core/mat.hpp(1413): warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
+     1>c:\users\fred\documents\github\pmc_vision dll export ver\pmc_vision\pmcdelta_recognitionc++\FuncDeclaration.h(8): warning C4267: '=' : conversion from 'size_t' to 'int', possible loss of data
          Utility.cpp
-     1>C:\opencv\build\include\opencv2/core/mat.hpp(1965): warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
-     1>C:\opencv\build\include\opencv2/core/persistence.hpp : warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
-     1>C:\opencv\build\include\opencv2/core/utility.hpp : warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
-         main.cpp
-     1>C:\opencv\build\include\opencv2/core/mat.hpp(1965): warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
-     1>C:\opencv\build\include\opencv2/core/persistence.hpp : warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
-     1>C:\opencv\build\include\opencv2/core/utility.hpp : warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
+     1>C:\opencv\build\include\opencv2/core/mat.hpp(1413): warning C4819: The file contains a character that cannot be represented in the current code page (950). Save the file in Unicode format to prevent data loss
+     1>c:\users\fred\documents\github\pmc_vision dll export ver\pmc_vision\pmcdelta_recognitionc++\FuncDeclaration.h(8): warning C4267: '=' : conversion from 'size_t' to 'int', possible loss of data
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Delta\Documents\GitHub\PMC_Vision\x64\Release\PMCDelta_recognitionC++.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:C:\opencv\build\x64\vc12\lib opencv_ts300.lib opencv_world300.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Delta\Documents\GitHub\PMC_Vision\x64\Release\PMCDelta_recognitionC++.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Delta\Documents\GitHub\PMC_Vision\x64\Release\PMCDelta_recognitionC++.lib" /MACHINE:X64 x64\Release\Binarization.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Fred\Documents\GitHub\PMC_Vision Dll Export ver\PMC_Vision\x64\Release\PMCDelta_recognitionC++.dll" /INCREMENTAL:NO /NOLOGO /LIBPATH:C:\opencv\build\x64\vc12\lib opencv_ts300.lib opencv_world300.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Fred\Documents\GitHub\PMC_Vision Dll Export ver\PMC_Vision\x64\Release\PMCDelta_recognitionC++.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Fred\Documents\GitHub\PMC_Vision Dll Export ver\PMC_Vision\x64\Release\PMCDelta_recognitionC++.lib" /MACHINE:X64 /DLL x64\Release\Binarization.obj
          x64\Release\CenterOrientation.obj
          x64\Release\main.obj
          x64\Release\Recognition.obj
          x64\Release\Segmentation.obj
          x64\Release\Utility.obj
+            Creating library C:\Users\Fred\Documents\GitHub\PMC_Vision Dll Export ver\PMC_Vision\x64\Release\PMCDelta_recognitionC++.lib and object C:\Users\Fred\Documents\GitHub\PMC_Vision Dll Export ver\PMC_Vision\x64\Release\PMCDelta_recognitionC++.exp
          Generating code
          Finished generating code
-         PMCDelta_recognitionC++.vcxproj -> C:\Users\Delta\Documents\GitHub\PMC_Vision\x64\Release\PMCDelta_recognitionC++.exe
-     1>Done Building Project "C:\Users\Delta\Documents\GitHub\PMC_Vision\PMCDelta_recognitionC++\PMCDelta_recognitionC++.vcxproj" (Build target(s)).
+         PMCDelta_recognitionC++.vcxproj -> C:\Users\Fred\Documents\GitHub\PMC_Vision Dll Export ver\PMC_Vision\x64\Release\PMCDelta_recognitionC++.dll
+     1>Done Building Project "C:\Users\Fred\Documents\GitHub\PMC_Vision Dll Export ver\PMC_Vision\PMCDelta_recognitionC++\PMCDelta_recognitionC++.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:05.36
+Time Elapsed 00:00:18.77

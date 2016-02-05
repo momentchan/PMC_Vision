@@ -1,22 +1,28 @@
 #include "FuncDeclaration.h"
 
-vector < vector<Point2i > > blobs;
+extern vector < vector<Point2i > > blobs;
 Mat label_image;
 extern Mat img;
 extern Mat refine;
-int minSize = 1000;
+int minSize = 5000;
 extern bool separateShow;
 extern vector <Mat> separatedObjectsBlack;
 extern vector <Mat> separatedObjectsColor;
 
 void ObjectSegment(){
-	cout << "Separating objects..." << endl << endl;
+	//cout << "Separating objects..." << endl << endl;
 	ConnectedComponent();
 	for (int i = 0; i < blobs.size(); i++) {
+	//for (vector < vector<Point2i > >::iterator  i =blobs.begin(); i != blobs.size(); i++) {
 		Mat object = Mat::zeros(refine.size(), 16);
 		int label = label_image.at<int>(blobs[i][0].y, blobs[i][0].x);
-		if (blobs[i].size()>minSize){
-			//cout << blobs[i].size() << endl;
+		/*if (blobs[i].size() < minSize){
+			blobs.erase(blobs.begin() + i);
+			i--;
+			continue;
+		}*/
+		//cout << blobs[i].size() << endl;
+		if (blobs[i].size() > minSize){
 			for (int j = 0; j < blobs[i].size(); j++) {
 				int x = blobs[i][j].x;
 				int y = blobs[i][j].y;
@@ -25,8 +31,6 @@ void ObjectSegment(){
 			object = HoleFilling(object);
 			separatedObjectsBlack.push_back(object);
 		}
-		
-
 		//if (separateShow){
 		//	imshow("Separated Objects", separatedObjectsBlack[i]);
 		//	waitKey(0);
